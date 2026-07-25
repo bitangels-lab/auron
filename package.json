@@ -1,0 +1,36 @@
+{
+  "name": "auron",
+  "private": true,
+  "version": "0.1.0",
+  "description": "AURON — RWA + DeFi + stablecoin credit infrastructure POC",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "indexer"
+  ],
+  "scripts": {
+    "setup": "npm run build -w @auron/config && npm run build -w @auron/sdk",
+    "predev": "npm run setup",
+    "dev": "concurrently -n api,web -c green,cyan \"npm run dev -w @auron/api\" \"npm run dev -w @auron/web\"",
+    "dev:api": "npm run setup && npm run dev -w @auron/api",
+    "dev:web": "npm run setup && npm run dev -w @auron/web",
+    "build": "npm run setup && npm run build -w @auron/api && npm run build -w @auron/web",
+    "lint": "npm run lint -w @auron/config && npm run lint -w @auron/sdk && npm run lint -w @auron/api && npm run lint -w @auron/web",
+    "test": "npm run test -w @auron/contracts --if-present",
+    "contracts:build": "npm run build -w @auron/contracts",
+    "contracts:test": "npm run test -w @auron/contracts",
+    "chain": "anvil --chain-id 31337",
+    "deploy:local": "node scripts/deploy-local.mjs",
+    "start": "npm run start -w @auron/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "axios": "^1.20.0"
+  }
+}
