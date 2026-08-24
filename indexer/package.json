@@ -1,0 +1,20 @@
+{
+  "name": "@auron/indexer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ponder dev",
+    "start": "ponder start",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "ponder": "^0.9.28",
+    "viem": "^2.21.54",
+    "hono": "^4.6.14"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2"
+  }
+}
